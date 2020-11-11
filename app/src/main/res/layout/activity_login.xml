@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="312dp"
+        android:layout_height="114dp"
+        android:layout_marginTop="70dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:srcCompat="@drawable/d" />
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/bar_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editText_email2"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:background="#FFD18C"
+        android:ems="10"
+        android:hint="@string/label_email"
+        android:inputType="textEmailAddress"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <Button
+        android:id="@+id/btn_Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="#FF8933"
+        android:onClick="btn_login"
+        android:text="@string/label_login"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView_forgot"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/checkBox_remember"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox_remember" />
+
+    <EditText
+        android:id="@+id/editText_password2"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:autofillHints=""
+        android:background="#FFD18C"
+        android:ems="10"
+        android:hint="@string/label_password"
+        android:inputType="textPassword"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/editText_email2"
+        app:layout_constraintStart_toStartOf="@+id/editText_email2"
+        app:layout_constraintTop_toBottomOf="@+id/editText_email2" />
+
+    <CheckBox
+        android:id="@+id/checkBox_remember"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="#00FFFFFF"
+        android:text="Remember Me"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/editText_password2"
+        app:layout_constraintTop_toBottomOf="@+id/editText_password2" />
+
+    <TextView
+        android:id="@+id/textView_forgot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:text="Forgot Password"
+        android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/checkBox_remember"
+        app:layout_constraintEnd_toEndOf="@+id/editText_password2" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="#00FFFFFF"
+        android:text="Don't Have an Account?"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/checkBox_remember"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Login" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:textColor="#FF8933"
+        android:textSize="18sp"
+        android:onClick="convert_register"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="@+id/textView_forgot" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
