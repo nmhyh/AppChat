@@ -20,6 +20,7 @@
     <include
         android:id="@+id/toolbar"
         layout="@layout/bar_layout"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -86,6 +87,7 @@
         android:layout_height="wrap_content"
         android:background="#00FFFFFF"
         android:text="Forgot Password"
+        android:onClick="forgot_password"
         android:textSize="18sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/checkBox_remember"
         app:layout_constraintEnd_toEndOf="@+id/editText_password2" />

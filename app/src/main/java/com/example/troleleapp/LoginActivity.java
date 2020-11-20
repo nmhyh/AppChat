@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -18,6 +19,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
     EditText email, password;
+
+    TextView forgot_password;
 
     FirebaseAuth auth;
     @Override
@@ -66,5 +69,9 @@ public class LoginActivity extends AppCompatActivity {
 
     public void convert_register(View view) {
         startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+    }
+
+    public void forgot_password(View view) {
+        startActivity(new Intent(LoginActivity.this, ResetPasswordActivity.class));
     }
 }

@@ -60,7 +60,7 @@
 
     <EditText
         android:id="@+id/editText_password"
-        android:layout_width="312dp"
+        android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginTop="16dp"
         android:background="#FFD18C"
@@ -74,7 +74,7 @@
 
     <EditText
         android:id="@+id/editText_comfirmpassword"
-        android:layout_width="312dp"
+        android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginTop="16dp"
         android:background="#FFD18C"
@@ -88,7 +88,7 @@
 
     <EditText
         android:id="@+id/editText_age"
-        android:layout_width="312dp"
+        android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginTop="16dp"
         android:autofillHints=""
@@ -120,8 +120,10 @@
         android:layout_width="0dp"
         android:layout_height="114dp"
         android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
         app:layout_constraintEnd_toEndOf="@+id/toolbar"
         app:layout_constraintStart_toStartOf="@+id/toolbar"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
@@ -141,7 +143,9 @@
             android:id="@+id/radioButton_Male"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="Male"
+            android:textColorLink="#fff"
             android:textSize="18sp" />
 
         <RadioButton

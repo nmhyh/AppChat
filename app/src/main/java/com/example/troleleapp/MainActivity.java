@@ -59,11 +59,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
+                assert user != null;
                 username.setText(user.getUsername());
                 if(user.getImageURL().equals("default")){
                     profile_image.setImageResource(R.mipmap.ic_launcher);
                 }else{
-                    Glide.with(MainActivity.this).load(user.getImageURL()).into(profile_image);
+
+                    // change this
+                    Glide.with(getApplicationContext()).load(user.getImageURL()).into(profile_image);
                 }
             }
 
@@ -97,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case  R.id.logout:
                 FirebaseAuth.getInstance().signOut();
-                // Change this code beacuse your app will crash
+                // Change this code because your app will crash
                 startActivity(new Intent(MainActivity.this, StartActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 
                 return true;
@@ -154,8 +157,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onPause() {
+        super.onPause();
         status("offline");
     }
 }

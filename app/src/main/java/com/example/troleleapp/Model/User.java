@@ -8,8 +8,9 @@ public class User {
     private String phone;
     private String age;
     private String status;
+    private String search;
 
-    public User(String id, String username, String imageURL, String sex, String phone, String age, String status) {
+    public User(String id, String username, String imageURL, String sex, String phone, String age, String status, String search) {
         this.id = id;
         this.username = username;
         this.imageURL = imageURL;
@@ -17,6 +18,7 @@ public class User {
         this.phone = phone;
         this.age = age;
         this.status = status;
+        this.search = search;
     }
 
     public User() {
@@ -77,5 +79,13 @@ public class User {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getSearch() {
+        return search;
+    }
+
+    public void setSearch(String search) {
+        this.search = search;
     }
 }

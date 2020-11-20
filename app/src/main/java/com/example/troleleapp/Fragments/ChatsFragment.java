@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.example.troleleapp.Adapter.UserAdapter;
 import com.example.troleleapp.Model.Chat;
+import com.example.troleleapp.Model.Chatlist;
 import com.example.troleleapp.Model.User;
 import com.example.troleleapp.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,7 +37,7 @@ public class ChatsFragment extends Fragment {
     FirebaseUser fuser;
     DatabaseReference reference;
 
-    private List<String> userList;
+    private List<Chatlist> userList;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -49,22 +50,17 @@ public class ChatsFragment extends Fragment {
         fuser = FirebaseAuth.getInstance().getCurrentUser();
         userList = new ArrayList<>();
 
-        reference = FirebaseDatabase.getInstance().getReference("Chats");
+        reference = FirebaseDatabase.getInstance().getReference("Chatlist").child(fuser.getUid());
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 userList.clear();
-                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
-                    Chat chat = snapshot.getValue(Chat.class);
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    Chatlist chatlist = snapshot.getValue(Chatlist.class);
 
-                    if (chat.getSender().equals(fuser.getUid())){
-                        userList.add(chat.getReceiver());
-                    }
-                    if(chat.getReceiver().equals(fuser.getUid())){
-                        userList.add(chat.getSender());
-                    }
+                    userList.add(chatlist);
                 }
-                readChats();
+                chatList();
             }
 
             @Override
@@ -72,43 +68,36 @@ public class ChatsFragment extends Fragment {
 
             }
         });
+
         return view;
 
     }
-    private  void readChats(){
+
+    private void chatList() {
         mUsers = new ArrayList<>();
         reference = FirebaseDatabase.getInstance().getReference("Users");
-//        reference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                mUsers.clear();
-//
-//                // Display 1 user from chats
-//                for(DataSnapshot snapshot:dataSnapshot.getChildren()){
-//                    User user = snapshot.getValue(User.class);
-//
-//                    for(String id : userList){
-//                        if(user.getId().equals(id)){
-//                            if(mUsers.size() != 0){
-//                                for (User user1 : mUsers){
-//                                    if(!user.getId().equals(user1.getId())){
-//                                        mUsers.add(user);
-//                                    }
-//                                }
-//                            }else {
-//                                mUsers.add(user);
-//                            }
-//                        }
-//                    }
-//                }
-//                mUserAdapter = new UserAdapter(getContext(), mUsers, true);
-//                mRecyclerView.setAdapter(mUserAdapter);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                mUsers.clear();
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    User user = snapshot.getValue(User.class);
+                    for(Chatlist chatlist : userList){
+                        if(user.getId().equals(chatlist.getId())){
+                            mUsers.add(user);
+                        }
+                    }
+                }
+                mUserAdapter = new UserAdapter(getContext(), mUsers, true);
+                mRecyclerView.setAdapter(mUserAdapter);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
+
 }
